@@ -1,6 +1,8 @@
 package com.visu.algo.sort.bubble;
 
-public class BubbleSort {
+import com.visu.algo.sort.Sorter;
+
+public class BubbleSorter implements Sorter {
 
     public void sort(int[] array) {
         boolean isSorted = false;
