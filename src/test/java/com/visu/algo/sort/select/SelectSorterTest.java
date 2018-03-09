@@ -1,4 +1,4 @@
-package com.visu.algo.sort.insert;
+package com.visu.algo.sort.select;
 
 import com.visu.algo.sort.TestUtil;
 import org.junit.Assert;
@@ -7,32 +7,30 @@ import org.junit.Test;
 
 import static com.visu.algo.sort.TestUtil.printArray;
 
-public class InsertSorterTest {
+public class SelectSorterTest {
 
     private static int[] array;
-    private static int[] shifted;
     private static int[] sorted;
 
-    private final InsertSorter sorter = new InsertSorter();
+    private final SelectSorter sorter = new SelectSorter();
 
     @Before
     public void setUp() {
         array   = new int[] {3, 2, 6, 1, 5, 4, 10, 7, 9, 8};
-        shifted = new int[] {3, 2, 7, 6, 1, 5, 4, 10, 9, 8};
         sorted  = new int[] {1, 2, 3, 4, 5, 6, 7,  8, 9, 10};
     }
 
     @Test
-    public void testShift() {
+    public void testGetMin() throws Exception {
         TestUtil.printArray(array);
-        sorter.shift(array, 7, 2);
+        int min = sorter.getMinIndex(array, 2);
         TestUtil.printArray(array);
 
-        Assert.assertArrayEquals(array, shifted);
+        Assert.assertEquals(3, min);
     }
 
     @Test
-    public void testSortArray() {
+    public void testSortArray() throws Exception {
         testSort(array, sorted);
     }
 
