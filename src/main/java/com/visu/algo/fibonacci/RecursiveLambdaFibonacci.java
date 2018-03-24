@@ -1,4 +1,4 @@
-package com.visu.sandbox.algo.fibonacci;
+package com.visu.algo.fibonacci;
 
 import java.util.List;
 import java.util.stream.Stream;

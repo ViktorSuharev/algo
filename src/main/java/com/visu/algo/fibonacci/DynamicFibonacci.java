@@ -1,4 +1,4 @@
-package com.visu.sandbox.algo.fibonacci;
+package com.visu.algo.fibonacci;
 
 public class DynamicFibonacci {
 
