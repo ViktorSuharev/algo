@@ -1,26 +1,33 @@
 package com.visu.algo.fibonacci;
 
-import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
-public class RecursiveCacheFibonacci {
+import static java.util.Map.entry;
 
-    private static Map<Integer, Integer> cache = new HashMap<>();
+public class RecursiveCacheFibonacci implements Fibonacci {
 
-    static {
-        cache.put(1, 1);
-        cache.put(2, 1);
+    private static Map<Integer, Integer> sequence = Map.ofEntries(
+            entry(1, 1),
+            entry(2, 1)
+    );
+
+    @Override
+    public List<Integer> getSequence(int n) {
+        getValue(n);
+        return sequence.values()
+                .stream()
+                .sorted()
+                .collect(Collectors.toList());
     }
 
-    public static void main(String[] args) {
-        System.out.println(RecursiveCacheFibonacci.getValue(10));
-    }
-
-    public static int getValue(int n) {
-        if (cache.containsKey(n)) return cache.get(n);
+    @Override
+    public int getValue(int n) {
+        if (sequence.containsKey(n)) return sequence.get(n);
 
         int result = getValue(n - 1) + getValue(n - 2);
-        cache.put(n, result);
+        sequence.put(n, result);
 
         return result;
     }
