@@ -2,6 +2,8 @@ package com.visu.algo.search.binary;
 
 public class BinarySearcher {
 
+    private static final int ELEMENT_NOT_FOUND = -1;
+
     public int binarySearch(double[] elements, double xElement) {
         return search(elements, 0, elements.length - 1, xElement);
     }
@@ -15,6 +17,6 @@ public class BinarySearcher {
             else return search(elements, mid + 1, right, xElement);
         }
 
-        return -1;
+        return ELEMENT_NOT_FOUND;
     }
 }
