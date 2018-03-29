@@ -6,42 +6,57 @@ public class MergeSorter implements Sorter {
 
     @Override
     public void sort(int[] array) {
+        if (array.length == 1) {
+            return;
+        }
 
-        int divPoint = array.length/2;
-        int[] left =  new int[divPoint];
-        int[] right = new int[array.length - divPoint];
-        System.arraycopy(array, 0, left, divPoint, divPoint);
+        int[] left  = getLeft(array);
+        int[] right = getRight(array);
+
+        sort(left);
+        sort(right);
+        merge(array, left, right);
     }
 
-    public int[] mergeSorted(int[] first, int[] second) {
-        int[] result = new int[first.length + second.length];
+    private int[] getLeft(int[] array) {
+        int divPoint = array.length / 2;
+        int[] left =  new int[divPoint];
+
+        System.arraycopy(array, 0, left, 0, left.length);
+
+        return left;
+    }
+
+    private int[] getRight(int[] array) {
+        int divPoint = array.length / 2;
+        int[] right = new int[array.length - divPoint];
+
+        System.arraycopy(array, divPoint, right, 0, right.length);
+
+        return right;
+    }
+
+    public void merge(int[] array, int[] first, int[] second) {
         int firstIndex = 0;
         int secondIndex = 0;
 
-        for (int i = 0; i < result.length; ++i) {
+        for (int i = 0; i < array.length; ++i) {
             if (firstIndex == first.length) {
-                completeArray(result, i, second, secondIndex);
+                completeArray(array, i, second, secondIndex);
                 break;
             }
 
             if (secondIndex == second.length) {
-                completeArray(result, i, first, firstIndex);
+                completeArray(array, i, first, firstIndex);
                 break;
             }
 
-            if (first[firstIndex] < second[secondIndex]) {
-                result[i] = first[firstIndex++];
-            } else {
-                result[i] = second[secondIndex++];
-            }
+            array[i] = (first[firstIndex] < second[secondIndex]) ?
+                    first[firstIndex++] : second[secondIndex++];
         }
-
-        return result;
     }
 
-    public void completeArray(int[] array, int arrayPos, int[] items, int itemsPosition) {
-        for (int i = 0; i < items.length - itemsPosition; ++i) {
-            array[arrayPos + i] = items[itemsPosition + i];
-        }
+    private void completeArray(int[] array, int arrayPos, int[] items, int itemsPosition) {
+        System.arraycopy(items, itemsPosition, array, arrayPos, items.length - itemsPosition);
     }
 }
