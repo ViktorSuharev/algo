@@ -1,4 +1,4 @@
-package com.visu.algo.string;
+package com.visu.algo.string.inverter;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -15,6 +15,11 @@ public class StringRecursiveInverterTest {
     @Test
     public void testInvertTwoSymbols() {
         Assert.assertEquals("ba", stringRecursiveInverter.invert("ab"));
+    }
+
+    @Test
+    public void testInvertThreeSymbols() {
+        Assert.assertEquals("cba", stringRecursiveInverter.invert("abc"));
     }
 
     @Test

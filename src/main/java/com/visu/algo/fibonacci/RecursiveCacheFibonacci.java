@@ -1,17 +1,13 @@
 package com.visu.algo.fibonacci;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import static java.util.Map.entry;
-
 public class RecursiveCacheFibonacci implements Fibonacci {
 
-    private static Map<Integer, Integer> sequence = Map.ofEntries(
-            entry(1, 1),
-            entry(2, 1)
-    );
+    private static Map<Integer, Integer> sequence = new HashMap<Integer, Integer>() {{put(1, 1); put(2, 1);}};
 
     @Override
     public List<Integer> getSequence(int n) {
