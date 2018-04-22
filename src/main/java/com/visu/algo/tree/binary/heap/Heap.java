@@ -1,15 +1,20 @@
 package com.visu.algo.tree.binary.heap;
 
-import com.visu.algo.structure.heap.list.model.Key;
-import com.visu.algo.tree.binary.model.BinaryTreeNode;
+import com.visu.algo.tree.binary.heap.model.HeapNode;
+
+import java.util.List;
 
 public interface Heap {
 
-    void add(BinaryTreeNode node);
+    void add(HeapNode node);
 
-    void delete(BinaryTreeNode node);
+    boolean delete(HeapNode node);
 
-    BinaryTreeNode getMax();
+    HeapNode getMax();
 
-    BinaryTreeNode find(Key key);
+    HeapNode find(HeapNode node);
+
+    List<HeapNode> toList();
+
+    int size();
 }

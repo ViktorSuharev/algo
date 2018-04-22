@@ -6,6 +6,7 @@ import com.visu.algo.tree.binary.model.BinaryTreeNode;
 public class HeapNode extends BinaryTreeNode {
 
     private Key key;
+    private HeapNode parent;
 
     public HeapNode(Key key) {
         super();
