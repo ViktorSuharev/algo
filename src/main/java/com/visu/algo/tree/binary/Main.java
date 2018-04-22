@@ -1,27 +1,50 @@
-package com.visu.algo.tree.binary.traverser;
+package com.visu.algo.tree.binary;
 
-import com.visu.algo.tree.binary.model.BinaryTree;
+import com.visu.algo.tree.binary.model.BinaryTreeNode;
 import com.visu.algo.tree.binary.model.Value;
+import com.visu.algo.tree.binary.traverser.BinaryTreeTraverser;
+import com.visu.algo.tree.binary.traverser.InorderTraverser;
+import com.visu.algo.tree.binary.traverser.PostorderTraverser;
+import com.visu.algo.tree.binary.traverser.PreorderTraverser;
 
 public class Main {
 
     public static void main(String[] args) {
-        BinaryTreeTraverser traverser = new InorderTraverser();
+        testInorder();
+        System.out.println();
+        testPreorder();
+        System.out.println();
+        testPostorder();
+    }
 
-        BinaryTree tree = buildBinaryTree();
+    private static void testInorder() {
+        BinaryTreeTraverser traverser = new InorderTraverser();
+        BinaryTreeNode tree = buildBinaryTree();
         traverser.traverse(tree);
     }
 
-    public static BinaryTree buildBinaryTree() {
-        BinaryTree nodeA = new BinaryTree(new Value("A"));
-        BinaryTree nodeB = new BinaryTree(new Value("B"));
-        BinaryTree nodeC = new BinaryTree(new Value("C"));
-        BinaryTree nodeD = new BinaryTree(new Value("D"));
-        BinaryTree nodeE = new BinaryTree(new Value("E"));
-        BinaryTree nodeG = new BinaryTree(new Value("F"));
-        BinaryTree nodeF = new BinaryTree(new Value("G"));
-        BinaryTree nodeH = new BinaryTree(new Value("H"));
-        BinaryTree nodeJ = new BinaryTree(new Value("J"));
+    private static void testPreorder() {
+        BinaryTreeTraverser traverser = new PreorderTraverser();
+        BinaryTreeNode tree = buildBinaryTree();
+        traverser.traverse(tree);
+    }
+
+    private static void testPostorder() {
+        BinaryTreeTraverser traverser = new PostorderTraverser();
+        BinaryTreeNode tree = buildBinaryTree();
+        traverser.traverse(tree);
+    }
+
+    private static BinaryTreeNode buildBinaryTree() {
+        BinaryTreeNode nodeA = new BinaryTreeNode(new Value("A"));
+        BinaryTreeNode nodeB = new BinaryTreeNode(new Value("B"));
+        BinaryTreeNode nodeC = new BinaryTreeNode(new Value("C"));
+        BinaryTreeNode nodeD = new BinaryTreeNode(new Value("D"));
+        BinaryTreeNode nodeE = new BinaryTreeNode(new Value("E"));
+        BinaryTreeNode nodeF = new BinaryTreeNode(new Value("F"));
+        BinaryTreeNode nodeG = new BinaryTreeNode(new Value("G"));
+        BinaryTreeNode nodeH = new BinaryTreeNode(new Value("H"));
+        BinaryTreeNode nodeJ = new BinaryTreeNode(new Value("J"));
 
         nodeA.setLeft(nodeB);
         nodeA.setRight(nodeC);
@@ -29,7 +52,7 @@ public class Main {
         nodeB.setLeft(nodeD);
 
         nodeC.setLeft(nodeE);
-        nodeD.setRight(nodeF);
+        nodeC.setRight(nodeF);
 
         nodeE.setRight(nodeG);
 

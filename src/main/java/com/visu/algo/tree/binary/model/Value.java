@@ -33,6 +33,6 @@ public class Value {
 
     @Override
     public String toString() {
-        return  value;
+        return value;
     }
 }
