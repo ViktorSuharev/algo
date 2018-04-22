@@ -1,4 +1,4 @@
-package com.visu.algo.tree.binary.model;
+package com.visu.algo.structure.heap.list.model;
 
 public class Value {
 

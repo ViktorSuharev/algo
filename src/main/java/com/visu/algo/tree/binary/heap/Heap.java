@@ -1,6 +1,6 @@
 package com.visu.algo.tree.binary.heap;
 
-import com.visu.algo.tree.binary.heap.model.Key;
+import com.visu.algo.structure.heap.list.model.Key;
 import com.visu.algo.tree.binary.model.BinaryTreeNode;
 
 public interface Heap {

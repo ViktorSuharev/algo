@@ -1,8 +1,5 @@
 package com.visu.algo.structure.heap.list.model;
 
-import com.visu.algo.tree.binary.heap.model.Key;
-import com.visu.algo.tree.binary.model.Value;
-
 public class HeapNode {
 
     private Key key;

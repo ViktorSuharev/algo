@@ -1,7 +1,7 @@
 package com.visu.algo.tree.binary;
 
 import com.visu.algo.tree.binary.model.BinaryTreeNode;
-import com.visu.algo.tree.binary.model.Value;
+import com.visu.algo.structure.heap.list.model.Value;
 import com.visu.algo.tree.binary.traverser.BinaryTreeTraverser;
 import com.visu.algo.tree.binary.traverser.InorderTraverser;
 import com.visu.algo.tree.binary.traverser.PostorderTraverser;

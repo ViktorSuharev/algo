@@ -1,5 +1,7 @@
 package com.visu.algo.tree.binary.model;
 
+import com.visu.algo.structure.heap.list.model.Value;
+
 public class BinaryTreeNode {
 
     private Object value;

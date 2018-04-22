@@ -2,7 +2,6 @@ package com.visu.algo.structure.heap.list;
 
 import com.visu.algo.structure.heap.Heap;
 import com.visu.algo.structure.heap.list.model.HeapNode;
-import com.visu.algo.tree.binary.heap.model.Key;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,8 +23,15 @@ public class HeapListImpl implements Heap {
     }
 
     @Override
-    public void delete(HeapNode node) {
+    public boolean delete(HeapNode node) {
+        for (int i = 0; i < heap.size(); ++i ) {
+            if (node.equals(heap.get(i))) {
+                heap.remove(i);
+                return true;
+            }
+        }
 
+        return false;
     }
 
     @Override
@@ -40,8 +46,24 @@ public class HeapListImpl implements Heap {
     }
 
     @Override
-    public HeapNode find(Key key) {
+    public HeapNode find(HeapNode node) {
+        for (int i = 0; i < heap.size(); ++i ) {
+            if (node.equals(heap.get(i))) {
+                return heap.get(i);
+            }
+        }
+
         return null;
+    }
+
+    @Override
+    public List<HeapNode> toList() {
+        return new ArrayList<>(heap);
+    }
+
+    @Override
+    public int size() {
+        return heap.size();
     }
 
     @Override
