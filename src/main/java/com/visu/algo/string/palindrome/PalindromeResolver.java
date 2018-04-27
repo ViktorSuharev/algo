@@ -1,4 +1,4 @@
-package com.visu.algo.string.palindrom;
+package com.visu.algo.string.palindrome;
 
 public class PalindromeResolver {
 

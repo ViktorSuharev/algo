@@ -1,11 +1,11 @@
-package com.visu.algo.string.palindrom;
+package com.visu.algo.string.palindrome;
 
 import org.junit.Assert;
 import org.junit.Test;
 
 public class PalindromeResolverTest {
 
-    private PalindromeResolver resolver = new PalindromeResolver();
+    private final PalindromeResolver resolver = new PalindromeResolver();
 
     @Test
     public void isPalindrome() {
