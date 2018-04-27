@@ -51,7 +51,7 @@ public class KMaxElementsFinder {
     }
 
     private void addValueToPool(List<Integer> sortedList, int value) {
-        int positionToInsert = getPositionByLinearSearch(sortedList, value);
+        int positionToInsert = getPositionByBinarySearch(sortedList, value);
         for (int i = sortedList.size() - 1; i > positionToInsert; --i) {
             sortedList.set(i, sortedList.get(i - 1));
         }
@@ -68,7 +68,19 @@ public class KMaxElementsFinder {
         return OUT_OF_RANGE;
     }
 
-    protected int binarySearch(List<Integer> sortedList, int value) {
-        return 0;
+    protected int getPositionByBinarySearch(List<Integer> sortedList, int value) {
+        return getPositionByBinarySearch(sortedList, 0, sortedList.size() - 1, value);
+    }
+
+    private int getPositionByBinarySearch(List<Integer> sortedList, int left, int right, double xElement) {
+        if (left <= right) {
+            int mid = left + (right - left) / 2;
+
+            if (sortedList.get(mid) == xElement) return mid;
+            else if (sortedList.get(mid) > xElement) return getPositionByBinarySearch(sortedList, left, mid - 1, xElement);
+            else return getPositionByBinarySearch(sortedList, mid + 1, right, xElement);
+        }
+
+        return OUT_OF_RANGE;
     }
 }
