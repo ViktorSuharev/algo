@@ -39,7 +39,7 @@ public class HashTableImpl implements HashTable {
     public boolean put(Node entry) {
         Key key = entry.getKey();
 
-        rebalanceIfNeeded(true);
+        resizeIfNeeded(true);
 
         List<Node> bucket = getBuckets(key);
         if (bucket == null) {
@@ -72,7 +72,7 @@ public class HashTableImpl implements HashTable {
     public boolean delete(Node entry) {
         Key key = entry.getKey();
 
-        rebalanceIfNeeded(false);
+        resizeIfNeeded(false);
 
         List<Node> bucket = getBuckets(key);
 
@@ -84,7 +84,7 @@ public class HashTableImpl implements HashTable {
 
     @Override
     public boolean deleteByKey(Key key) {
-        rebalanceIfNeeded(false);
+        resizeIfNeeded(false);
 
         List<Node> bucket = getBuckets(key);
 
@@ -108,18 +108,18 @@ public class HashTableImpl implements HashTable {
         buckets = new List[initialCapacity];
     }
 
-    private void rebalanceIfNeeded(boolean up) {
-        if (isNeededToRebalance(up)) {
-            rebalance();
+    private void resizeIfNeeded(boolean up) {
+        if (isNeededToResize(up)) {
+            resize();
         }
     }
 
-    private boolean isNeededToRebalance(boolean up) {
+    private boolean isNeededToResize(boolean up) {
         int bit = up ? 1 : -1;
         return ((float) ((count + bit) / capacity)) >= LOAD_FACTOR;
     }
 
-    private void rebalance() {
+    private void resize() {
         List<Node>[] oldBuckets = new List[capacity];
         System.arraycopy(buckets, 0, oldBuckets, 0, buckets.length);
 

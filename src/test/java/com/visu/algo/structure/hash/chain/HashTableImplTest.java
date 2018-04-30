@@ -30,7 +30,7 @@ public class HashTableImplTest {
     }
 
     @Test
-    public void testPut_withCollisionAndRebalance() throws Exception {
+    public void testPut_withCollisionAndResize() throws Exception {
         for (int i = 4; i < 32; ++i) {
             Assert.assertFalse(hashTable.contains(new Key("key" + i)));
             hashTable.put(createEntry("key" + i, "value" + i));
@@ -66,7 +66,7 @@ public class HashTableImplTest {
     }
 
     @Test
-    public void testDelete_withRebalance() throws Exception {
+    public void testDelete_withResize() throws Exception {
         for (int i = 4; i < 32; ++i) {
             hashTable.put(createEntry("key" + i, "value" + i));
             Assert.assertNotNull(hashTable.get(new Key("key" + i)));
@@ -86,7 +86,7 @@ public class HashTableImplTest {
     }
 
     @Test
-    public void testDeleteByKey_withRebalance() throws Exception {
+    public void testDeleteByKey_withResize() throws Exception {
         for (int i = 4; i < 32; ++i) {
             hashTable.put(createEntry("key" + i, "value" + i));
             Assert.assertNotNull(hashTable.get(new Key("key" + i)));
