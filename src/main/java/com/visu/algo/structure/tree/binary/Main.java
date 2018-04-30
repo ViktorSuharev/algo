@@ -1,11 +1,11 @@
-package com.visu.algo.tree.binary;
+package com.visu.algo.structure.tree.binary;
 
-import com.visu.algo.tree.binary.model.BinaryTreeNode;
+import com.visu.algo.structure.tree.binary.model.BinaryTreeNode;
 import com.visu.algo.structure.heap.list.model.Value;
-import com.visu.algo.tree.binary.traverser.BinaryTreeTraverser;
-import com.visu.algo.tree.binary.traverser.InorderTraverser;
-import com.visu.algo.tree.binary.traverser.PostorderTraverser;
-import com.visu.algo.tree.binary.traverser.PreorderTraverser;
+import com.visu.algo.structure.tree.binary.traverser.BinaryTreeTraverser;
+import com.visu.algo.structure.tree.binary.traverser.InorderTraverser;
+import com.visu.algo.structure.tree.binary.traverser.PostorderTraverser;
+import com.visu.algo.structure.tree.binary.traverser.PreorderTraverser;
 
 public class Main {
 

@@ -1,7 +1,7 @@
-package com.visu.algo.tree.binary.heap.model;
+package com.visu.algo.structure.tree.binary.heap.model;
 
 import com.visu.algo.structure.heap.list.model.Key;
-import com.visu.algo.tree.binary.model.BinaryTreeNode;
+import com.visu.algo.structure.tree.binary.model.BinaryTreeNode;
 
 public class HeapNode extends BinaryTreeNode {
 

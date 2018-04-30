@@ -1,4 +1,4 @@
-package com.visu.algo.tree.binary.model;
+package com.visu.algo.structure.tree.binary.model;
 
 import com.visu.algo.structure.heap.list.model.Value;
 

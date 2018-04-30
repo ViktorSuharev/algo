@@ -1,4 +1,4 @@
-package com.visu.algo.structure.hash.closed;
+package com.visu.algo.structure.hash.chain;
 
 import com.visu.algo.structure.hash.HashTable;
 import com.visu.algo.structure.hash.hashcode.HashFunction;
@@ -7,7 +7,6 @@ import com.visu.algo.structure.hash.model.Key;
 import com.visu.algo.structure.hash.model.Value;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class HashTableImpl implements HashTable {
@@ -86,14 +85,4 @@ public class HashTableImpl implements HashTable {
         return list == null || list.isEmpty();
     }
 
-    public static void main(String[] args) {
-
-        List<String> buckets = Arrays.asList("str1", "str2", "str3");
-
-        String result = buckets.stream()
-                .filter("str4"::equals)
-                .findFirst().get();
-
-        System.out.println(result);
-    }
 }

@@ -1,4 +1,4 @@
-package com.visu.algo.tree.binary.traverser;
+package com.visu.algo.structure.tree.binary.traverser;
 
 public abstract class AbstractBinaryTreeTraverser {
 

@@ -1,6 +1,6 @@
-package com.visu.algo.tree.binary.traverser;
+package com.visu.algo.structure.tree.binary.traverser;
 
-import com.visu.algo.tree.binary.model.BinaryTreeNode;
+import com.visu.algo.structure.tree.binary.model.BinaryTreeNode;
 
 public interface BinaryTreeTraverser {
 
