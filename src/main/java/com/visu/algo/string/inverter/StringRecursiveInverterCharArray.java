@@ -1,6 +1,6 @@
-package com.visu.algo.string;
+package com.visu.algo.string.inverter;
 
-public class StringRecursiveInverter {
+public class StringRecursiveInverterCharArray {
 
     public String invert(String str) {
         return invert(str.toCharArray(), 0);

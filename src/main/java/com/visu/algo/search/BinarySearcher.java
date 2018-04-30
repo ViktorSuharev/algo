@@ -1,10 +1,11 @@
-package com.visu.algo.search.binary;
+package com.visu.algo.search;
 
-public class BinarySearcher {
+public class BinarySearcher implements Searcher {
 
     private static final int ELEMENT_NOT_FOUND = -1;
 
-    public int binarySearch(double[] elements, double xElement) {
+    @Override
+    public int search(double[] elements, double xElement) {
         return search(elements, 0, elements.length - 1, xElement);
     }
 
