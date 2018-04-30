@@ -3,6 +3,10 @@ package com.visu.algo.structure.hash.model;
 public class Key {
     private String value;
 
+    public Key(String value) {
+        this.value = value;
+    }
+
     public String getValue() {
         return value;
     }

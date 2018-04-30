@@ -2,7 +2,7 @@ package com.visu.algo.structure.hash.chain;
 
 import com.visu.algo.structure.hash.HashTable;
 import com.visu.algo.structure.hash.hashcode.HashFunction;
-import com.visu.algo.structure.hash.model.HashEntry;
+import com.visu.algo.structure.hash.model.Node;
 import com.visu.algo.structure.hash.model.Key;
 import com.visu.algo.structure.hash.model.Value;
 
@@ -11,74 +11,146 @@ import java.util.List;
 
 public class HashTableImpl implements HashTable {
 
-    private final static int DEFAULT_INITIAL_CAPACITY = 100;
+    private final static int DEFAULT_INITIAL_CAPACITY = 16;
     private final static float LOAD_FACTOR = 0.75f;
 
+    private final int initialCapacity;
     private int capacity;
-    private List<List<HashEntry>> buckets;
+    private int count;
+    private List<Node>[] buckets;
 
     public HashTableImpl() {
         this(DEFAULT_INITIAL_CAPACITY);
     }
 
     public HashTableImpl(int capacity) {
+        this.initialCapacity = capacity;
         this.capacity = capacity;
-        buckets = new ArrayList<>(capacity);
+        this.count = 0;
+        this.buckets = new List[capacity];
+    }
+
+    public static void main(String[] args) {
+        for (int i = 1; i <= 32; ++i)
+            System.out.println(i + " : " + HashFunction.hashCode(new Key("key" + i)) % 16);
     }
 
     @Override
-    public void put(HashEntry entry) {
+    public boolean put(Node entry) {
         Key key = entry.getKey();
 
-        List<HashEntry> segment = getBuckets(key);
-        if (segment == null) {
-            segment = new ArrayList<>();
+        rebalanceIfNeeded(true);
+
+        List<Node> bucket = getBuckets(key);
+        if (bucket == null) {
+            bucket = new ArrayList<>();
+            buckets[getHashCode(key)] = bucket;
         }
 
-        segment.add(entry);
+        Node storedEntry = findEntryByKey(bucket, entry.getKey());
+        if (storedEntry != null) {
+            storedEntry.setValue(entry.getValue());
+            return true;
+        }
+
+        boolean result = bucket.add(entry);
+        if (result) count++;
+
+        return result;
     }
 
     @Override
     public Value get(Key key) {
-        List<HashEntry> buckets = getBuckets(key);
-        if (buckets == null || buckets.isEmpty()) return null;
+        List<Node> bucket = getBuckets(key);
+        if (bucket == null || bucket.isEmpty()) return null;
 
-        return findEntryByKey(buckets, key)
+        return findEntryByKey(bucket, key)
                 .getValue();
     }
 
     @Override
-    public boolean delete(HashEntry entry) {
+    public boolean delete(Node entry) {
         Key key = entry.getKey();
 
-        List<HashEntry> buckets = getBuckets(key);
-        return buckets.remove(entry);
+        rebalanceIfNeeded(false);
+
+        List<Node> bucket = getBuckets(key);
+
+        boolean result = bucket.remove(entry);
+        if (result) count--;
+
+        return result;
     }
 
     @Override
     public boolean deleteByKey(Key key) {
-        List<HashEntry> buckets = getBuckets(key);
+        rebalanceIfNeeded(false);
 
-        return !isNullOrEmpty(buckets) && buckets.remove(findEntryByKey(buckets, key));
+        List<Node> bucket = getBuckets(key);
+
+        if (isNullOrEmpty(bucket)) return false;
+
+        boolean result = bucket.remove(findEntryByKey(bucket, key));
+        if (result) count--;
+
+        return result;
     }
 
     @Override
     public boolean contains(Key key) {
-        List<HashEntry> buckets = getBuckets(key);
+        List<Node> bucket = getBuckets(key);
 
-        return !isNullOrEmpty(buckets) && findEntryByKey(buckets, key) != null;
+        return !isNullOrEmpty(bucket) && findEntryByKey(bucket, key) != null;
     }
 
-    private List<HashEntry> getBuckets(Key key) {
-        int index = HashFunction.hashCode(key) % capacity;
-        return buckets.get(index);
+    @Override
+    public void clear() {
+        buckets = new List[initialCapacity];
     }
 
-    private HashEntry findEntryByKey(List<HashEntry> buckets, Key key) {
-        return buckets.stream()
-                .filter(e -> key.equals(e.getKey()))
-                .findFirst()
-                .orElse(null);
+    private void rebalanceIfNeeded(boolean up) {
+        if (isNeededToRebalance(up)) {
+            rebalance();
+        }
+    }
+
+    private boolean isNeededToRebalance(boolean up) {
+        int bit = up ? 1 : -1;
+        return ((float) ((count + bit) / capacity)) >= LOAD_FACTOR;
+    }
+
+    private void rebalance() {
+        List<Node>[] oldBuckets = new List[capacity];
+        System.arraycopy(buckets, 0, oldBuckets, 0, buckets.length);
+
+        capacity = 2 * count;
+        buckets = new List[capacity];
+
+        for (List<Node> oldBucket : oldBuckets) {
+            if (oldBucket == null) continue;
+            for (Node entry : oldBucket) {
+                put(entry);
+            }
+        }
+    }
+
+    private List<Node> getBuckets(Key key) {
+        int index = getHashCode(key);
+        return buckets[index];
+    }
+
+    private int getHashCode(Key key) {
+        return HashFunction.hashCode(key) % capacity;
+    }
+
+    private Node findEntryByKey(List<Node> bucket, Key key) {
+        for(Node entry : bucket) {
+            if (key.equals(entry.getKey())) {
+                return entry;
+            }
+        }
+
+        return null;
     }
 
     private boolean isNullOrEmpty(List list) {

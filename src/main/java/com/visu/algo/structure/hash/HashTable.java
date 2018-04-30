@@ -1,18 +1,20 @@
 package com.visu.algo.structure.hash;
 
-import com.visu.algo.structure.hash.model.HashEntry;
+import com.visu.algo.structure.hash.model.Node;
 import com.visu.algo.structure.hash.model.Key;
 import com.visu.algo.structure.hash.model.Value;
 
 public interface HashTable {
 
-    void put(HashEntry entry);
+    boolean put(Node entry);
 
     Value get(Key key);
 
-    boolean delete(HashEntry entry);
+    boolean delete(Node entry);
 
     boolean deleteByKey(Key key);
 
     boolean contains(Key key);
+
+    void clear();
 }
