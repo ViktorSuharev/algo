@@ -15,7 +15,7 @@ public class RbTreeImpl implements RbTree {
             root.setBlack(true);
         }
 
-        
+
     }
 
     @Override
