@@ -6,7 +6,7 @@ import com.visu.algo.structure.tree.binary.search.model.Value;
 
 public interface BinaryTree {
 
-    boolean add(Node node);
+    void add(Node node);
 
     Value find(Key key);
 
