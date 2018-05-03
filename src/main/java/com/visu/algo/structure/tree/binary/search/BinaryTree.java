@@ -1,8 +1,8 @@
 package com.visu.algo.structure.tree.binary.search;
 
-import com.visu.algo.structure.tree.binary.search.model.Key;
-import com.visu.algo.structure.tree.binary.search.model.Node;
-import com.visu.algo.structure.tree.binary.search.model.Value;
+import com.visu.algo.structure.tree.binary.search.bst.model.Key;
+import com.visu.algo.structure.tree.binary.search.bst.model.Node;
+import com.visu.algo.structure.tree.binary.search.bst.model.Value;
 
 public interface BinaryTree {
 

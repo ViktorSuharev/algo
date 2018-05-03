@@ -1,4 +1,4 @@
-package com.visu.algo.structure.tree.binary.search.model;
+package com.visu.algo.structure.tree.binary.search.bst.model;
 
 public class Node {
 

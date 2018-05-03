@@ -1,11 +1,7 @@
-package com.visu.algo.structure.tree.binary.rb.model;
+package com.visu.algo.structure.tree.binary.search.rb.model;
 
-public class Key {
+public class Value {
     private String value;
-
-    public Key(String value) {
-        this.value = value;
-    }
 
     public String getValue() {
         return value;
@@ -20,9 +16,9 @@ public class Key {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Key key = (Key) o;
+        Value value1 = (Value) o;
 
-        return value != null ? value.equals(key.value) : key.value == null;
+        return value != null ? value.equals(value1.value) : value1.value == null;
     }
 
     @Override
@@ -32,7 +28,7 @@ public class Key {
 
     @Override
     public String toString() {
-        return "Key{" +
+        return "Value{" +
                 "value='" + value + '\'' +
                 '}';
     }

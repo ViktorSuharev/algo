@@ -1,15 +1,22 @@
-package com.visu.algo.structure.tree.binary.search;
+package com.visu.algo.structure.tree.binary.search.bst;
 
-import com.visu.algo.structure.tree.binary.search.model.Key;
-import com.visu.algo.structure.tree.binary.search.model.Node;
-import com.visu.algo.structure.tree.binary.search.model.Value;
+import com.visu.algo.structure.tree.binary.search.BinaryTree;
+import com.visu.algo.structure.tree.binary.search.bst.model.Key;
+import com.visu.algo.structure.tree.binary.search.bst.model.Node;
+import com.visu.algo.structure.tree.binary.search.bst.model.Value;
+import com.visu.algo.structure.tree.binary.traverser.AbstractBinaryTreeTraverser;
+import com.visu.algo.structure.tree.binary.traverser.BinaryTreeTraverser;
+import com.visu.algo.structure.tree.binary.traverser.model.BinaryTreeNode;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.Stack;
+
 public class BinaryTreeImplTest {
 
     private final BinaryTree binaryTree = new BinaryTreeImpl();
+
 /**
             5
           /  \
@@ -19,6 +26,7 @@ public class BinaryTreeImplTest {
           /
          3
  */
+
     @Before
     public void setUp() {
         Node node1 = createNode("key1", "value1");

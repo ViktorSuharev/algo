@@ -1,4 +1,4 @@
-package com.visu.algo.structure.tree.binary.rb.model;
+package com.visu.algo.structure.tree.binary.search.rb.model;
 
 import com.visu.algo.structure.heap.list.model.Value;
 

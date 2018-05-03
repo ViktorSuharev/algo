@@ -1,8 +1,11 @@
-package com.visu.algo.structure.tree.binary.search;
+package com.visu.algo.structure.tree.binary.search.bst;
 
-import com.visu.algo.structure.tree.binary.search.model.Key;
-import com.visu.algo.structure.tree.binary.search.model.Node;
-import com.visu.algo.structure.tree.binary.search.model.Value;
+import com.visu.algo.structure.tree.binary.search.BinaryTree;
+import com.visu.algo.structure.tree.binary.search.bst.model.Key;
+import com.visu.algo.structure.tree.binary.search.bst.model.Node;
+import com.visu.algo.structure.tree.binary.search.bst.model.Value;
+
+import java.util.Stack;
 
 public class BinaryTreeImpl implements BinaryTree {
 
@@ -107,10 +110,11 @@ public class BinaryTreeImpl implements BinaryTree {
             return;
         }
 
-        if (node.getParent().getLeft() != null && node.getKey().equals(node.getParent().getLeft().getKey())) {
-            node.getParent().setLeft(link);
+        Node parent = node.getParent();
+        if (parent.getLeft() != null && node.getKey().equals(parent.getLeft().getKey())) {
+            parent.setLeft(link);
         } else {
-            node.getParent().setRight(link);
+            parent.setRight(link);
         }
     }
 
@@ -118,5 +122,19 @@ public class BinaryTreeImpl implements BinaryTree {
         if (root.getLeft() == null) return root;
 
         return getLeftest(root.getLeft());
+    }
+
+    private void rotateLeft(Node root) {
+        Node left = root.getLeft();
+        Node right = root.getRight();
+        Node parent = root.getParent();
+
+        if (parent == null) {
+
+        }
+    }
+
+    private void rotateRight() {
+
     }
 }
