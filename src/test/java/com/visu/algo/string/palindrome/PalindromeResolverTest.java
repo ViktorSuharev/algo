@@ -5,7 +5,7 @@ import org.junit.Test;
 
 public class PalindromeResolverTest {
 
-    private final PalindromeResolver resolver = new PalindromeResolver();
+    private final PalindromeResolver resolver = new IterativePalindromeResolver();
 
     @Test
     public void isPalindrome() {
