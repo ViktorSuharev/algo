@@ -9,18 +9,16 @@ public class CharCompressor {
         char[] arr = str.toCharArray();
 
         int counter = 1;
-        char prev = arr[0];
         for (int i = 1; i < arr.length; ++i) {
-            if (arr[i] == prev) {
+            if (arr[i] == arr[i - 1]) {
                 counter++;
             } else {
-                res.append(prev);
+                res.append(arr[i - 1]);
                 if (counter > 1) res.append(counter);
                 counter = 1;
             }
-            prev = arr[i];
         }
-        res.append(prev);
+        res.append(arr[arr.length - 1]);
         if (counter > 1) res.append(counter);
 
         return res.toString();
