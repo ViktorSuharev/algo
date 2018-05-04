@@ -1,6 +1,6 @@
 package com.visu.algo.string.compress;
 
-public class Compressor {
+public class CharCompressor {
 
     public String compress(String str) {
         if (str == null || str.isEmpty()) return "";
