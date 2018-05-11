@@ -2,6 +2,10 @@ package com.visu.algo.string.compress;
 
 public class CharCompressor {
 
+    /**
+     * input  aaabbcdde
+     * output a3b2cd2e
+     */
     public String compress(String str) {
         if (str == null || str.isEmpty()) return "";
 

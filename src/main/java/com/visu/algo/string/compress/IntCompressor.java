@@ -2,6 +2,11 @@ package com.visu.algo.string.compress;
 
 public class IntCompressor {
 
+
+    /**
+     * input  1 2 3 4 5 7 9 10 11 13 14
+     * output 1-5,7,8-11,13-14
+     */
     public String compress(int[] arr) {
         if (arr == null || arr.length == 0) return "";
 
