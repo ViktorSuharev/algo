@@ -9,4 +9,5 @@ public interface LruCache {
 
     void put(Key key, Value value);
 
+    void clear();
 }
