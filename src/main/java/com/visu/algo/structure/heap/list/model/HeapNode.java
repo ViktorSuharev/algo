@@ -1,28 +1,30 @@
 package com.visu.algo.structure.heap.list.model;
 
-public class HeapNode {
+import com.visu.algo.structure.heap.list.model.key.AbstractKey;
 
-    private Key key;
-    private Value value;
+public class HeapNode<K extends AbstractKey, V> {
 
-    public HeapNode(Key key, Value value) {
+    private K key;
+    private V value;
+
+    public HeapNode(K key, V value) {
         this.key = key;
         this.value = value;
     }
 
-    public Key getKey() {
+    public K getKey() {
         return key;
     }
 
-    public void setKey(Key key) {
+    public void setKey(K key) {
         this.key = key;
     }
 
-    public Value getValue() {
+    public V getValue() {
         return value;
     }
 
-    public void setValue(Value value) {
+    public void setValue(V value) {
         this.value = value;
     }
 

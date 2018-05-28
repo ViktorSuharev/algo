@@ -2,11 +2,13 @@ package com.visu.algo.structure.heap.list;
 
 import com.visu.algo.structure.heap.Heap;
 import com.visu.algo.structure.heap.list.model.HeapNode;
+import com.visu.algo.structure.heap.list.model.key.AbstractKey;
+import com.visu.algo.structure.heap.list.model.key.Key;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class HeapListImpl implements Heap {
+public class HeapListImpl<K extends AbstractKey> implements Heap<K> {
 
     private List<HeapNode> heap = new ArrayList<>();
 
@@ -74,7 +76,7 @@ public class HeapListImpl implements Heap {
     private void bubbleUp(int currentPos) {
         int parentPos = (currentPos - 1) / 2;
 
-        if (currentPos <= 0 || getKey(parentPos) > getKey(currentPos)) return;
+        if (currentPos <= 0 || getKey(parentPos).compareTo(getKey(currentPos)) > 0) return;
 
         swap(parentPos, currentPos);
         bubbleUp(parentPos);
@@ -86,8 +88,8 @@ public class HeapListImpl implements Heap {
 
         if (leftChildPos > heap.size() - 1 || rightChildPos > heap.size() - 1) return;
 
-        int greatestChildPos = getKey(leftChildPos) > getKey(rightChildPos) ? leftChildPos : rightChildPos;
-        if (getKey(greatestChildPos) > getKey(current)) {
+        int greatestChildPos = getKey(leftChildPos).compareTo(getKey(rightChildPos)) > 0 ? leftChildPos : rightChildPos;
+        if (getKey(greatestChildPos).compareTo(getKey(current)) > 0) {
             swap(current, greatestChildPos);
             bubbleDown(greatestChildPos);
         }
@@ -99,8 +101,8 @@ public class HeapListImpl implements Heap {
         heap.set(b, tmp);
     }
 
-    private int getKey(int pos) {
-        return heap.get(pos).getKey().getValue();
+    private Key getKey(int pos) {
+        return heap.get(pos).getKey();
     }
 
     private void buildHeap(List<HeapNode> list) {

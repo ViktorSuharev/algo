@@ -2,7 +2,8 @@ package com.visu.algo.structure.heap.list;
 
 import com.visu.algo.structure.heap.Heap;
 import com.visu.algo.structure.heap.list.model.HeapNode;
-import com.visu.algo.structure.heap.list.model.Key;
+import com.visu.algo.structure.heap.list.model.key.Key;
+import com.visu.algo.structure.heap.list.model.key.KeyImpl;
 import com.visu.algo.structure.heap.list.model.Value;
 import org.junit.After;
 import org.junit.Assert;
@@ -35,7 +36,7 @@ public class HeapListImplTest {
     }
 
     private static HeapNode createHeapNode(int key, String value) {
-        return new HeapNode(new Key(key), new Value(value));
+        return new HeapNode(new KeyImpl(key), new Value(value));
     }
 
     @Test
@@ -45,10 +46,10 @@ public class HeapListImplTest {
 
     private void assertHeapCondition(Heap heap) {
         List<HeapNode> list = heap.toList();
-        int prev = list.get(0).getKey().getValue();
+        Key prev = list.get(0).getKey();
         for (int i = 1; i < list.size(); ++i) {
-            int current = list.get(0).getKey().getValue();
-            Assert.assertTrue(prev >= current);
+            Key current = list.get(0).getKey();
+            Assert.assertTrue(prev.compareTo(current) >= 0);
             prev = current;
         }
     }

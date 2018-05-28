@@ -32,7 +32,7 @@ public class Key {
 
     @Override
     public String toString() {
-        return "Key{" +
+        return "KeyImpl{" +
                 "value='" + value + '\'' +
                 '}';
     }

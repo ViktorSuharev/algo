@@ -1,10 +1,10 @@
-package com.visu.algo.structure.heap.list.model;
+package com.visu.algo.structure.heap.list.model.key;
 
-public class Key {
+public class KeyImpl extends AbstractKey implements Key {
 
     private int value;
 
-    public Key(int value) {
+    public KeyImpl(int value) {
         this.value = value;
     }
 
@@ -16,14 +16,18 @@ public class Key {
         this.value = value;
     }
 
+    public int compareTo(KeyImpl keyImpl) {
+        return Integer.compare(value, keyImpl.value);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Key key = (Key) o;
+        KeyImpl keyImpl = (KeyImpl) o;
 
-        return value == key.value;
+        return value == keyImpl.value;
     }
 
     @Override
