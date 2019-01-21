@@ -4,7 +4,7 @@ import com.visu.algo.structure.heap.list.model.HeapNode;
 
 import java.util.List;
 
-public interface Heap {
+public interface Heap<K> {
 
     void add(HeapNode node);
 

@@ -1,23 +1,23 @@
 package com.visu.algo.structure.tree.binary.heap.model;
 
-import com.visu.algo.structure.heap.list.model.Key;
+import com.visu.algo.structure.heap.list.model.key.KeyImpl;
 
 public class HeapNode extends BinaryTreeNode {
 
-    private Key key;
+    private KeyImpl keyImpl;
     private HeapNode parent;
 
-    public HeapNode(Key key) {
+    public HeapNode(KeyImpl keyImpl) {
         super();
-        this.key = key;
+        this.keyImpl = keyImpl;
     }
 
-    public Key getKey() {
-        return key;
+    public KeyImpl getKeyImpl() {
+        return keyImpl;
     }
 
-    public void setKey(Key key) {
-        this.key = key;
+    public void setKeyImpl(KeyImpl keyImpl) {
+        this.keyImpl = keyImpl;
     }
 
 }
